@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="VboxRoot" prefHeight="480.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ksuperapp.Controller">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#SaveToLog" text="Save to Log" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#startAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <TextArea fx:id="txtAreaLogs" editable="false" prefHeight="260.0" prefWidth="700.0" text="Logs:&#10;" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <HBox spacing="10.0">
+         <children>
+            <Button fx:id="btnFlleMngr" contentDisplay="TOP" minHeight="60.0" minWidth="85.0" mnemonicParsing="false" onAction="#openFM" text="File Manager">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/File.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnCmd" contentDisplay="TOP" layoutX="10.0" layoutY="20.0" minHeight="60.0" minWidth="85.0" mnemonicParsing="false" onAction="#openCmd" text="cmd">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/File.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnTerminal" contentDisplay="TOP" layoutX="105.0" layoutY="20.0" minHeight="60.0" minWidth="85.0" mnemonicParsing="false" onAction="#openTerminal" text="Terminal">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/File.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnTasks" contentDisplay="TOP" layoutX="200.0" layoutY="20.0" maxHeight="60.0" maxWidth="85.0" minHeight="60.0" minWidth="85.0" mnemonicParsing="false" onAction="#openTasks" text="Tasks" wrapText="true">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/File.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="TOP" layoutX="295.0" layoutY="20.0" minHeight="60.0" minWidth="85.0" mnemonicParsing="false" onAction="#openTop" text="Top">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/File.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </HBox>
+   </center>
+</BorderPane>

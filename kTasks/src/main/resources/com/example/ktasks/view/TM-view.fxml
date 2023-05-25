@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ktasks.TMController">
+   <center>
+      <TableView fx:id="tableview" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+            <TableColumn fx:id="clmPid" prefWidth="75.0" text="PID" />
+          <TableColumn fx:id="clmName" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="clmStTime" prefWidth="75.0" text="Start time" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </center>
+   <left>
+      <VBox prefHeight="400.0" prefWidth="222.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblCompName" text="Computer name:" />
+            <Label fx:id="lblElapTime" layoutX="10.0" layoutY="10.0" text="Elapsed time of &lt;PID&gt;:" />
+            <Label fx:id="lblThCount" layoutX="10.0" layoutY="28.0" text="All Threads count:" />
+         </children>
+         <padding>
+            <Insets left="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </left>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#OnClickSaveToFile" text="Save to File" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
