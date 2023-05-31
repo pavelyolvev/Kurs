@@ -28,7 +28,7 @@ public class managerMethods {
 
         if(!Objects.isNull(source) && (
                 source.toString().startsWith(new File(root + "/System").toString())
-                || source.toString().startsWith(new File(root + "/Trash can").toString()))
+                || source.toString().equals(new File(root + "/Trash can").toString()))
                 || source.toString().endsWith(String.valueOf(root))){
             throw new RuntimeException("Can't perform task System Folder");
         }

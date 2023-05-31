@@ -11,32 +11,31 @@ public class JNAMethods {
     public interface IOCommands extends Library {
         IOCommands INSTANCE = (IOCommands)Native.load("c", IOCommands.class);
 
-        int open(String var1, int var2);
+        int open(String pathname, int flag);
 
-        int close(int var1);
+        int close(int fd);
 
-        int read(int var1, byte[] var2, int var3);
+        int read(int fd, byte[] buffer, int count);
 
-        int write(int var1, byte[] var2, int var3);
+        int write(int fd, byte[] buffer, int count);
         int mkdir(String path, int mode);
     }
 
     public interface ProcComm extends Library {
         ProcComm INSTANCE = (ProcComm)Native.load("c", ProcComm.class);
 
-        void XInitThreads();
 
         int getpid();
 
-        int kill(int var1, int var2);
+        int kill(int pid, int signal);
 
         int fork();
 
-        int execvp(String var1, String[] var2);
+        int execvp(String command, String[] args);
 
-        int getpriority(int var1, int var2);
+        int getpriority(int type, int pid);
 
-        int setpriority(int var1, int var2, int var3);
+        int setpriority(int type, int pid, int priority);
     }
 
     public static class IO {

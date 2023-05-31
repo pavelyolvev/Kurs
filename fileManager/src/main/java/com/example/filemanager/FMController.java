@@ -436,7 +436,9 @@ public class FMController {
     }
     @FXML
     void MountDrive(ActionEvent event) throws IOException {
-        Process process = Runtime.getRuntime().exec("lsblk -o MOUNTPOINT");
+        String pathTodrives = "/media/" + System.getProperty("user.name")+"/";
+
+        /*
 
         File FlashDir = new File(Root + "/FlashDrive");
         if (FlashDir.mkdir())
@@ -469,6 +471,8 @@ public class FMController {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+
+         */
 
 
         

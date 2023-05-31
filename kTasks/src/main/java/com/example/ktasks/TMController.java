@@ -1,3 +1,4 @@
+
 package com.example.ktasks;
 
 import javafx.animation.AnimationTimer;
@@ -20,11 +21,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.Objects;
 
 import java.util.logging.FileHandler;
@@ -64,11 +60,9 @@ public class TMController {
     @FXML
     void OnClickSaveToFile(ActionEvent event) {
             fileHandler.close();
-
     }
 
     public void setStage(Stage stage){
-
         stage.setOnCloseRequest(event -> {
             Platform.exit();
             System.exit(0);
@@ -77,8 +71,6 @@ public class TMController {
     @FXML
     void initialize() throws IOException {
         fileHandler = new FileHandler("app.log");
-
-        // Установка форматтера для определения структуры записей в лог-файле
         SimpleFormatter formatter = new SimpleFormatter();
         fileHandler.setFormatter(formatter);
 
@@ -120,17 +112,14 @@ public class TMController {
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException ex) {
-                        Thread.currentThread().interrupt(); // Восстанавливаем флаг прерывания
+                        Thread.currentThread().interrupt();
                         break;
                     }
-
-                    // UI update is run on the Application thread
                     Platform.runLater(updater);
                 }
             }
 
         });
-
 
         sharedMemory.openSharedMemory();
         pidList = FXCollections.observableList(sharedMemory.getSharedPID());
@@ -138,16 +127,10 @@ public class TMController {
         thread.setDaemon(true);
         thread.start();
 
-
-
-
         tableview.setItems(pidList);
         clmPid.setCellValueFactory(new PropertyValueFactory<>("Pid"));
         clmName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         clmStTime.setCellValueFactory(new PropertyValueFactory<>("StartTime"));
-
-
-
     }
 
     void update(){
@@ -164,7 +147,6 @@ public class TMController {
                     LOGGER.log(Level.INFO, lblElapTime.getText());
                 } else selProc = savedProc;
 
-
                 pidList = FXCollections.observableList(sharedMemory.getSharedPID());
 
                 ThCount = 0;
@@ -174,15 +156,11 @@ public class TMController {
                 lblThCount.setText("Threads count: "+ThCount);
                 LOGGER.log(Level.INFO, lblThCount.getText());
 
-
-
                 tableview.setItems(pidList);
                 tableview.refresh();
 
-                Thread.sleep(1000);
-            } catch (InterruptedException | IOException e) {
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
     }
 }

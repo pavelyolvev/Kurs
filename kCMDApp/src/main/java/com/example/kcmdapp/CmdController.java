@@ -115,6 +115,22 @@ public class CmdController extends Application{
             case "mkdir" ->{
                 txtAreaCmd.appendText(JNAMethods.IO.mkdir(splCom[1]) + "\n");
             }
+            case "help" ->{
+                txtAreaCmd.appendText("""
+                        help -- shows this message
+                        getpid -- get PID of the current process
+                        kill <pid> <SIG> -- kills the process. 2, 15 - soft shutdown. 9 - kill
+                        exec <program> <args> -- executes program with args
+                        get_priority <pid> -- get priority of pid
+                        set_priority <pid> <priority> -- set priority to the pid
+                        open <path to file> -- opens the file. Returns fd
+                        close <fd> -- closes file
+                        read <fd> -- reads file
+                        write <fd> <msg> -- writes message to the file
+                        mkdir <path> -- makes a directory\s
+                        """);
+
+            }
         }
 
     }
