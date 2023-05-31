@@ -2,12 +2,8 @@ package com.example.ksuperapp;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.URISyntaxException;
-import java.nio.file.Path;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -97,6 +93,19 @@ public class Controller {
 
         txtAreaLogs.appendText("[" + LocalDateTime.now() + "] [" + ProcessHandle.current().pid() + " Super App] execute File Manager with pid " + process.pid() + "\n");
     }
+    @FXML
+    void openFMFlash(ActionEvent event) throws IOException, URISyntaxException {
+
+        String pathTodrives = "/media/" + System.getProperty("user.name")+"/";
+        File jarPath = new File(appPath.getParent() + "/fileManager.jar");
+        //////////////////////////////////////////////////////////////////////////
+        ProcessBuilder FM = new ProcessBuilder("java", "--module-path", new File(appPath.getParent() + "/lib/").toString(), "--add-modules", "javafx.controls,javafx.fxml","-jar", jarPath.toString(), pathTodrives);
+        Process process = FM.start();
+
+        SharedMemory.addToPidList(process.pid());
+
+        txtAreaLogs.appendText("[" + LocalDateTime.now() + "] [" + ProcessHandle.current().pid() + " Super App] execute File Manager with pid " + process.pid() + "\n");
+    }
 
     @FXML
     void openTasks(ActionEvent event) throws IOException {
@@ -132,6 +141,30 @@ public class Controller {
         ProcessBuilder pb = new ProcessBuilder("x-terminal-emulator", "-e", "top");
         Process process = pb.start();
         txtAreaLogs.appendText("[" + LocalDateTime.now() + "] [" + ProcessHandle.current().pid() + " Super App] execute Top with pid " + process.pid() + "\n");
+    }
+    @FXML
+    void openDisks(ActionEvent event) throws IOException {
+        ProcessBuilder pb = new ProcessBuilder("gnome-disks");
+        Process process = pb.start();
+        txtAreaLogs.appendText("[" + LocalDateTime.now() + "] [" + ProcessHandle.current().pid() + " Super App] execute Disks with pid " + process.pid() + "\n");
+    }
+    @FXML
+    void openCalc(ActionEvent event) throws IOException {
+        ProcessBuilder pb = new ProcessBuilder("gnome-calculator");
+        Process process = pb.start();
+        txtAreaLogs.appendText("[" + LocalDateTime.now() + "] [" + ProcessHandle.current().pid() + " Super App] execute Calculator with pid " + process.pid() + "\n");
+    }
+    @FXML
+    void openSysMon(ActionEvent event) throws IOException {
+        ProcessBuilder pb = new ProcessBuilder("gnome-system-monitor");
+        Process process = pb.start();
+        txtAreaLogs.appendText("[" + LocalDateTime.now() + "] [" + ProcessHandle.current().pid() + " Super App] execute System monitor with pid " + process.pid() + "\n");
+    }
+    @FXML
+    void openTxtEditor(ActionEvent event) throws IOException {
+        ProcessBuilder pb = new ProcessBuilder("gnome-text-editor");
+        Process process = pb.start();
+        txtAreaLogs.appendText("[" + LocalDateTime.now() + "] [" + ProcessHandle.current().pid() + " Super App] execute Text Editor with pid " + process.pid() + "\n");
     }
 }
 

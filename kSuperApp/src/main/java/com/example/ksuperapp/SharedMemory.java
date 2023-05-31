@@ -40,31 +40,13 @@ public class SharedMemory {
     public static void share() throws IOException {
         file = new File(appPath.getParent() + "/shared_memory.bin");
         FileChannel fileChannel = FileChannel.open( file.toPath(), StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.CREATE );
-
         MappedByteBuffer buffer = fileChannel.map(MapMode.READ_WRITE, 0, 4096);
         LongBuffer longBuffer = buffer.asLongBuffer();
-
-
-
-        /*
-        for (long pidCh: pidList) {
-            if(ProcessHandle.of(pidCh).isEmpty())
-                pidList.remove(pidCh);
-        }
-
-         */
-
-
         System.out.println(pidList.size());
         longBuffer.put(0, pidList.size());
-        //longBuffer.put(1, pidList.get(0));
-
-
         for (int i = 1; i <= pidList.size(); i++) {
             longBuffer.put(i, pidList.get(i-1));
         }
-
-
         buffer.force();
         fileChannel.close();
     }
